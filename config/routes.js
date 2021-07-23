@@ -22,6 +22,6 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
- 'get /test':'Test.getAll',
-
+  'get /test':'Test.getAll',
+  'get /': 'Test.hi',
 };
