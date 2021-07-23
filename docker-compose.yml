@@ -1,0 +1,60 @@
+version: '3.1'
+
+networks:
+  backend:
+    driver: 'bridge'
+    
+volumes:
+  mongo:
+    driver: "local"
+  notused:
+
+services:
+
+  nodejs:
+    container_name: ${NODE_CONTAINER_NAME}
+    build: 
+      context: ./docker/nodejs
+    ports:
+      - 9229:9229
+    volumes:
+      - ./:/home/node/app
+    depends_on:
+      - mongo
+    networks:
+      - backend
+
+  mongo:
+    container_name: ${MONGO_CONTAINER_NAME}
+    image: mongo:5.0.1
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+      - 27017:27017
+    volumes:
+      - ${DATA_SAVE_PATH}/mongo:/data/db
+    networks: 
+      - backend
+
+  nginx:
+    container_name: ${NGINX_CONTAINER_NAME}
+    depends_on: 
+      - nodejs
+    build:
+      context: ./docker/nginx
+    volumes:
+      - ${HOST_NGINX_LOG_PATH}:/var/log/nginx
+      - ${HOST_NGINX_TEMPLATES_PATH}:/etc/nginx/templates
+      - ${HOST_FRONTEND_DIR}:/var/www/public
+      # Para o tempo dentro dos containers ficar igual ao host
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      - SERVER_NAME=${SERVER_NAME}
+      - NODE_CONTAINER_NAME=${NODE_CONTAINER_NAME}
+    ports: 
+      - 80:80
+      - 443:443
+    networks: 
+      - backend
