@@ -12,5 +12,9 @@ module.exports = {
     return res.status(200).json(response);
   },
 
+  hi: async function(req, res) {
+    return res.status(200).send('hello world from SailsJS :)');
+  }
+
 };
 
