@@ -16,13 +16,87 @@ module.exports.bootstrap = async function(done) {
   // For example:
   // ```
   // Set up fake development data (or if we already have some, avast)
-  if (await Test.count() > 0) {
+  if (await Usuario.count() > 0) {
     return done();
   }
-  
-  await Test.createEach([
-    { nome: 'teste 1', },
-    { nome: 'Teste 2', },
+
+  await Usuario.createEach([
+    {
+      id: 1,
+      emailAddress: 'teste@gmail.com',
+      fullName: 'Teste da Silva',
+      password: await sails.helpers.passwords.hashPassword('abc123'),
+      escola: 1,
+      ano: '5'},
+    {
+      id: 2,
+      emailAddress: 'guilherme@gmail.com',
+      fullName: 'Guilherme da Silva',
+      password: await sails.helpers.passwords.hashPassword('abc123'),
+      escola: 1,
+      ano: '5'},
+    {
+      id: 3,
+      emailAddress: 'gustavo@gmail.com',
+      fullName: 'Gustavo da Silva',
+      password: await sails.helpers.passwords.hashPassword('abc123'),
+      escola: 2,
+      ano: '5'},
+    {
+      id: 4,
+      emailAddress: 'roberto@gmail.com',
+      fullName: 'Roberto da Silva',
+      password: await sails.helpers.passwords.hashPassword('abc123'),
+      escola: 1,
+      ano: '5'},
+    {
+      id: 5,
+      emailAddress: 'silva@gmail.com',
+      fullName: 'Silva da Silva',
+      password: await sails.helpers.passwords.hashPassword('abc123'),
+      escola: 3,
+      ano: '8'},
+    {
+      id: 6,
+      emailAddress: 'silvana@gmail.com',
+      fullName: 'Silvana da Silva',
+      password: await sails.helpers.passwords.hashPassword('abc123'),
+      escola: 1,
+      ano: '9'},
+    {
+      id: 7,
+      emailAddress: 'iodites@gmail.com',
+      fullName: 'Iodites da Silva',
+      password: await sails.helpers.passwords.hashPassword('abc123'),
+      escola: 1,
+      ano: '5'},
+    {
+      id: 8,
+      emailAddress: 'superadmin@gmail.com',
+      fullName: 'SUPER ADMIN TEST',
+      password: await sails.helpers.passwords.hashPassword('superadmin'),
+      escola: 4,
+      ano: '3',
+      role: 'superadmin',
+    },
+    {
+      id: 9,
+      emailAddress: 'professor@gmail.com',
+      fullName: 'PROFESSOR TEST',
+      password: await sails.helpers.passwords.hashPassword('professor'),
+      escola: 1,
+      ano: '5',
+      role: 'professor',
+    },
+    {
+      id: 10,
+      emailAddress: 'diretor@gmail.com',
+      fullName: 'DIRETOR TEST',
+      password: await sails.helpers.passwords.hashPassword('diretor'),
+      escola: 1,
+      ano: '3',
+      role: 'diretor',
+    },
   ]);
 
   // Don't forget to trigger `done()` when this bootstrap function's logic is finished.
