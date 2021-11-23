@@ -56,6 +56,11 @@ module.exports.routes = {
  'delete /colegio/:id': 'ColegioController.deleteColegio',
  'patch /colegio/:id': 'ColegioController.patchColegio',
 
+ 'get /atividade/:id?': 'AtividadeController.getAtividade',
+ 'post /atividade': 'AtividadeController.createAtividade',
+ 'delete /atividade/:id': 'AtividadeController.deleteAtividade',
+ 'patch /atividade/:id': 'AtividadeController.patchAtividade',
+
  'get /account/:id?': 'UsuarioController.getAccount',
  'post /account': 'UsuarioController.signup',
  'delete /account/:id': 'UsuarioController.deleteAccount',

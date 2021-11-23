@@ -1,0 +1,26 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // PARA DEBUGAR, VOCÊ PRECISA PRIMEIRO SUBIR OS CONTAINERS
+      // COM AS TASKS DISPONÍVEIS PARA ESSE PROJETO OU MANUALMENTE.
+      // DEPOIS, PRECISA USAR A EXTENSÃO REMOTE-CONTAINER DO VSCODE
+      // PARA CONECTAR COM O CONTAINER DO NODEJS.
+      // DEPOIS DISSO, SÓ APERTAR F5 QUE O DEBUGGER VAI CONECTAR
+      // COM O PROCESSO DO NODE SENDO EXECUTADO NO DOCKER
+      "name": "Docker: Attach to Node",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "timeout": 30000,
+      "address": "localhost",
+      "protocol": "inspector",
+      "restart": true,
+      "remoteRoot": "/home/node/app",
+      "localRoot": "${workspaceFolder}",
+    }
+  ]
+}
