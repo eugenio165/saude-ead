@@ -20,6 +20,10 @@ module.exports.bootstrap = async function(done) {
     return done();
   }
 
+  await Tutorial.create({
+    iframe: '<p style="text-align:center"><iframe frameborder="0" height="315" src="https://www.youtube.com/embed/yaU8yO968F4" width="560"></iframe></p>',
+  });
+
   await Colegio.createEach([
     {
       id: 1,
