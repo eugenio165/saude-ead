@@ -38,4 +38,8 @@ module.exports.routes = {
  'get /diretores': 'UsuarioController.getDiretores',
  'get /professores': 'UsuarioController.getProfessores',
  'get /alunos': 'UsuarioController.getAlunos',
+
+ 'get /tutorial': 'TutorialController.getTutorial',
+ 'patch /tutorial': 'TutorialController.editTutorial',
+ 'delete /tutorial': 'TutorialController.deleteTutorial',
 };
