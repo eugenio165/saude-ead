@@ -22,6 +22,15 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'get /test':'Test.getAll',
-  'get /': 'Test.hi',
+ 'post /signup':'UsuarioController.signup',
+ 'post /login': 'LoginController.login',
+
+ 'get /account/:id?': 'UsuarioController.getAccount',
+ 'post /account': 'UsuarioController.signup',
+ 'delete /account/:id': 'UsuarioController.deleteAccount',
+ 'patch /account/:id': 'UsuarioController.patchAccount',
+
+ 'get /diretores': 'UsuarioController.getDiretores',
+ 'get /professores': 'UsuarioController.getProfessores',
+ 'get /alunos': 'UsuarioController.getAlunos',
 };
