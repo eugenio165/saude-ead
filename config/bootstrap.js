@@ -20,6 +20,29 @@ module.exports.bootstrap = async function(done) {
     return done();
   }
 
+  await Colegio.createEach([
+    {
+      id: 1,
+      nome: 'Colégio Getúlio Vargas',
+      endereco: 'rua 1, 123, 312310-232 Belavista, bauru-sp',
+    },
+    {
+      id: 2,
+      nome: 'Colégio 2',
+      endereco: 'rua 1',
+    },
+    {
+      id: 3,
+      nome: 'Colégio 3',
+      endereco: 'rua 23',
+    },
+    {
+      id: 4,
+      nome: 'Colégio Super Admin',
+      endereco: 'rua Super Admin',
+    },
+  ])
+
   await Usuario.createEach([
     {
       id: 1,
