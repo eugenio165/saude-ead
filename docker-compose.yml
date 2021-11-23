@@ -17,6 +17,8 @@ services:
       context: ./docker/nodejs
     ports:
       - 9229:9229
+    environment:
+      NODE_ENV: ${NODE_ENV}
     volumes:
       - ./:/home/node/app
     depends_on:

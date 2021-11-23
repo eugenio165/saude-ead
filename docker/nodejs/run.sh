@@ -31,4 +31,8 @@ echo "Executing node in ${NODE_ENV}"
 echo '==============================================='
 echo ''
 
-yarn sails lift
+if [ "${NODE_ENV}" = 'development' ] || [ "${NODE_ENV}" = 'dev' ]; then
+  yarn start:dev
+elif [ "${NODE_ENV}" = 'production' ] || [ "${NODE_ENV}" = 'prod' ]; then
+  yarn start
+fi
