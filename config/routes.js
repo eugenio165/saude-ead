@@ -25,6 +25,32 @@ module.exports.routes = {
  'post /signup':'UsuarioController.signup',
  'post /login': 'LoginController.login',
 
+ 'post /pontuacao': 'PontuacaoController.verifyCreatePontuacao',
+ 'get /pontuacao-colegio': 'PontuacaoController.pontuacaoColegio',
+ 'get /pontuacao-aluno': 'PontuacaoController.pontuacaoAluno',
+ 'get /pontuacao/:id?': 'PontuacaoController.getPontuacao',
+ 'patch /pontuacao/:id': 'PontuacaoController.patchPontuacao',
+ 'delete /pontuacao/:id': 'PontuacaoController.deletePontuacao',
+ 'post /pontuacao-quiz': 'PontuacaoController.pontuacaoQuiz',
+
+ 'post /conteudo': 'ConteudoController.createConteudo',
+ 'get /conteudo/:id?': 'ConteudoController.getConteudo',
+ 'patch /conteudo/:id': 'ConteudoController.patchConteudo',
+ 'delete /conteudo/:id': 'ConteudoController.deleteConteudo',
+
+ 'get /questao/:id?': 'QuestoesController.getQuestao',
+ 'post /questao': 'QuestoesController.createQuestao',
+ 'delete /questao/:id': 'QuestoesController.deleteQuestao',
+ 'patch /questao/:id': 'QuestoesController.patchQuestao',
+
+ 'get /quizes-livres-conteudo': 'QuizController.QuizesLivresConteudo',
+ 'get /quizes-livres-atividade': 'QuizController.QuizesLivresAtividade',
+ 'get /quiz-nao-respondido': 'QuizController.quizNaoRespondidos',
+ 'get /quiz/:id?': 'QuizController.getQuizes',
+ 'patch /quiz/:id': 'QuizController.patchQuiz',
+ 'post /quiz': 'QuizController.createQuiz',
+ 'delete /quiz/:id': 'QuizController.deleteQuiz',
+
  'get /colegio/:id?': 'ColegioController.getColegio',
  'post /colegio': 'ColegioController.createColegio',
  'delete /colegio/:id': 'ColegioController.deleteColegio',
