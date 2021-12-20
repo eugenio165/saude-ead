@@ -8,6 +8,7 @@
     "@sailshq/lodash": "^3.10.3",
     "async": "2.0.1",
     "lodash": "4.17.11",
+    "nodemon": "^2.0.15",
     "sails": "^1.0.2",
     "sails-hook-organics": "^0.14.5",
     "sails-hook-orm": "^2.0.0-16",
@@ -20,7 +21,7 @@
   },
   "scripts": {
     "start": "NODE_ENV=production node app.js",
-    "start:dev": "node --inspect=0.0.0.0:9229 app.js",
+    "start:dev": "nodemon --inspect=0.0.0.0:9229 app.js",
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "eslint . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
     "custom-tests": "echo \"(No other custom tests yet.)\" && echo"

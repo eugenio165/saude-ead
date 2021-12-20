@@ -1,0 +1,11 @@
+{
+  "ignore": [
+    ".git",
+    "node_modules"
+  ],
+  "watch": [
+    "./api",
+    "./config"
+  ],
+  "ext": "js"
+}
