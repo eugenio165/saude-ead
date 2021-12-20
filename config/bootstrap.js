@@ -16,13 +16,23 @@
   // For example:
   // ```
   // Set up fake development data (or if we already have some, avast)
-  if (false) {
+  const allUsers = await Usuario.find();
+  if (allUsers.length > 0) {
     return done();
   }
 
-  await Tutorial.create({
-    iframe: '<p style="text-align:center"><iframe frameborder="0" height="315" src="https://www.youtube.com/embed/yaU8yO968F4" width="560"></iframe></p>',
-  });
+  const videoEducacionalEmbedded = '<iframe width="560" height="315" src="https://www.youtube.com/embed/qelEiERtEUY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+  await Tutorial.createEach([
+    {
+      nome: 'aluno',
+      iframe: videoEducacionalEmbedded,
+    },
+    {
+      nome: 'admin',
+      iframe: videoEducacionalEmbedded,
+    }
+  ]);
+  
 
   const colegios = await Colegio.createEach([
     {
@@ -47,49 +57,49 @@
     {
       emailAddress: 'teste@gmail.com',
       fullName: 'Teste da Silva',
-      password: await sails.helpers.passwords.hashPassword('abc123'),
+      password: await sails.helpers.passwords.hashPassword('123321'),
       escola: colegios[0].id,
       ano: '5'},
     {
       emailAddress: 'guilherme@gmail.com',
       fullName: 'Guilherme da Silva',
-      password: await sails.helpers.passwords.hashPassword('abc123'),
+      password: await sails.helpers.passwords.hashPassword('123321'),
       escola: colegios[0].id,
       ano: '5'},
     {
       emailAddress: 'gustavo@gmail.com',
       fullName: 'Gustavo da Silva',
-      password: await sails.helpers.passwords.hashPassword('abc123'),
+      password: await sails.helpers.passwords.hashPassword('123321'),
       escola: colegios[1].id,
       ano: '5'},
     {
       emailAddress: 'roberto@gmail.com',
       fullName: 'Roberto da Silva',
-      password: await sails.helpers.passwords.hashPassword('abc123'),
+      password: await sails.helpers.passwords.hashPassword('123321'),
       escola: colegios[0].id,
       ano: '5'},
     {
       emailAddress: 'silva@gmail.com',
       fullName: 'Silva da Silva',
-      password: await sails.helpers.passwords.hashPassword('abc123'),
+      password: await sails.helpers.passwords.hashPassword('123321'),
       escola: colegios[2].id,
       ano: '8'},
     {
       emailAddress: 'silvana@gmail.com',
       fullName: 'Silvana da Silva',
-      password: await sails.helpers.passwords.hashPassword('abc123'),
+      password: await sails.helpers.passwords.hashPassword('123321'),
       escola: colegios[0].id,
       ano: '9'},
     {
       emailAddress: 'iodites@gmail.com',
       fullName: 'Iodites da Silva',
-      password: await sails.helpers.passwords.hashPassword('abc123'),
+      password: await sails.helpers.passwords.hashPassword('123321'),
       escola: colegios[0].id,
       ano: '5'},
     {
       emailAddress: 'superadmin@gmail.com',
       fullName: 'SUPER ADMIN TEST',
-      password: await sails.helpers.passwords.hashPassword('superadmin'),
+      password: await sails.helpers.passwords.hashPassword('123321'),
       escola: colegios[3].id,
       ano: '3',
       role: 'superadmin',
@@ -97,7 +107,7 @@
     {
       emailAddress: 'professor@gmail.com',
       fullName: 'PROFESSOR TEST',
-      password: await sails.helpers.passwords.hashPassword('professor'),
+      password: await sails.helpers.passwords.hashPassword('123321'),
       escola: colegios[0].id,
       ano: '5',
       role: 'professor',
@@ -105,7 +115,7 @@
     {
       emailAddress: 'diretor@gmail.com',
       fullName: 'DIRETOR TEST',
-      password: await sails.helpers.passwords.hashPassword('diretor'),
+      password: await sails.helpers.passwords.hashPassword('123321'),
       escola: colegios[0].id,
       ano: '3',
       role: 'diretor',
@@ -192,19 +202,19 @@
       titulo: 'Conteudo 2 Corrida Prolongada',
     },
     {
-      texto: 'TEXTO CONTEUDO 3',
+      texto: '<p><span style="color:#ffffff"><span style="font-size:24px"><em><strong>TEXTO CONTEUDO 3</strong></em></span></span></p>',
       titulo: 'Conteudo 3 Corrida Velocidade',
     },
     {
-      texto: 'TEXTO CONTEUDO 4',
+      texto: '<p><span style="color:#ffffff"><span style="font-size:24px"><em><strong>TEXTO CONTEUDO 4</strong></em></span></span></p>',
       titulo: 'Conteudo 4 Corrida Obstaculos',
     },
     {
-      texto: 'TEXTO CONTEUDO 5',
+      texto: '<p><span style="color:#ffffff"><span style="font-size:24px"><em><strong>TEXTO CONTEUDO 5</strong></em></span></span></p>',
       titulo: 'CONTEUDO 5'
     },
     {
-      texto: 'TEXTO CONTEUDO SEM PROVA 2',
+      texto: '<p><span style="color:#ffffff"><span style="font-size:24px"><em><strong>TEXTO CONTEUDO SEM PROVA 1</strong></em></span></span></p>',
       titulo: 'CONTEUDO SEM PROVA 2 (TESTE)'
     },
   ]).fetch();
@@ -214,46 +224,46 @@
   const quizes = await Quiz.createEach([
     {
       questoes: idQuestoes.slice(0,7),
-      ordem: [6,5,4,3,2,1],
+      ordem: idQuestoes.slice(0,7).reverse(),
       conteudo: conteudos[0].id,
       titulo: 'Quiz Corrida Rasa',
     },
     {
       questoes: idQuestoes.slice(7, 11),
-      ordem: [7, 9, 8, 10],
+      ordem: idQuestoes.slice(7, 11),
       conteudo: conteudos[1].id,
       titulo: 'Quiz Corrida Prolongada',
     },
     {
       questoes: idQuestoes.slice(11, 15),
-      ordem: [11, 13, 12, 14],
+      ordem: idQuestoes.slice(11, 15),
       conteudo: conteudos[2].id,
       titulo: 'Quiz Corrida Velocidade',
     },
     {
       questoes: idQuestoes.slice(15, 19),
-      ordem: [15, 17, 16, 18],
+      ordem: idQuestoes.slice(15, 19),
       conteudo: conteudos[3].id,
       titulo: 'Quiz Corrida Obstaculos',
     },
     {
       questoes: idQuestoes.slice(19, 21),
-      ordem: [20, 19],
+      ordem: idQuestoes.slice(19, 21),
       titulo: 'Quiz Corrida SEM CONTEUDO E ATIVIDADE 1 (TESTE)',
     },
     {
       questoes: idQuestoes.slice(21, 23),
-      ordem: [22, 21],
+      ordem: idQuestoes.slice(21, 23),
       titulo: 'Quiz Corrida SEM CONTEUDO E ATIVIDADE 2 (TESTE)',
     },
     {
       questoes: idQuestoes.slice(23, 25),
-      ordem: [24, 23],
+      ordem: idQuestoes.slice(23, 25),
       titulo: 'Quiz Corrida SEM CONTEUDO E ATIVIDADE 3 (TESTE)',
     },
     {
       questoes: idQuestoes.slice(25, 29),
-      ordem: [25, 27, 26, 28],
+      ordem: idQuestoes.slice(25, 29),
       conteudo: conteudos[4].id,
       titulo: 'Quiz para atividade 5',
     },
@@ -299,7 +309,7 @@
       });
     }
 
-    await Usuario.update({id: i}).set({totalpontos: totalpontosaluno});
+    await Usuario.updateOne({ id: usuarios[i].id }).set({ totalpontos: totalpontosaluno });
   }
 
   await Pontuacao.createEach(p);

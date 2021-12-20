@@ -8,14 +8,18 @@
 module.exports = {
 
   attributes: {
-    iframe: {
-      type: 'string',
-      required: true,
-    }
-
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
+    iframe: {
+      type: 'string',
+      required: true,
+    },
+    nome: {
+      type: 'string',
+      required: true,
+      unique: true,
+    },
 
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
