@@ -30,22 +30,8 @@ docker-compose up --build
 
 # Após isso, o projeto já está no ar e acessível atraves do localhost.
 
-# Ao abrir o localhost (http://localhost), o NginX está servido um html básico escrito hello world.
-
 # Ao acessar a api (http://localhost/api), o NginX roteia as requisições para o SailJS, onde ele está na escuta.
 
-# Hoje, existe apenas um model teste no sistema, e ao iniciar é populado com duas entradas testes. Para consultar-las, acessar https://localhost/api/Test
-
-wget -O - http://localhost/api/Test
-
-# Será printado no console as duas entidade existentes no banco de dados hoje.
-
-# Da sua própria máquina, para conectar ao mongo db, utilizar o seguinte url em qualquer visualizador de dados do MongoDB
-
-# protocol://user:password@host:port/database
-mongodb://admin:admin@localhost:27017/admin
-
-# Dentro do banco de dados admin terá os dados do model Test
 ```
 
 # Ferramentas utilizadas
@@ -105,14 +91,3 @@ Observando o `default.conf.template` da pasta `docker/nginx/templates/local` pod
 Essa ferramenta permite uma melhor organização de tarefas em um projeto, permitindo a criação, descrição, organização, ordenação e agrupamento de tarefas relacionados ao projeto. Se torna essencial em equipes maiores, mas ainda auxilia bastante em desenvolvimento com times menores ou independentes, uma vez que permite a documentação do que (e quando) foi desenvolvido, frequentemente chamado de backlog. No desenvolvimento de Software é um ponto importante, uma vez que a organização fornece uma base segura para o desenvolvimento.
 
 No contexto da aplicação, utilizo para dividir escopos de desenvolvimento de uma forma que consigo facilmente olhar pra trás e ver o que desenvolvi, e entender facilmente, caso tiver qualquer problema que precisa ser revisto/rastreado.
-
-# Situação Atual
-Atualmente no projeto, existe apenas um model teste para validar a conexão com a API e o MongoDB, chamado Test, disponível no `api/models/Test.js`. Na pasta `models` é onde são definidas as entidades do sistema, podendo fornecer um schema para acessar os dados.
-
-Na pasta `api/controllers` estão os Controllers do sistema. Estes fornecem o funcionamento de cada "ação" ou requisição. No caso, no `api/controllers/TestController.js` temos duas ações, um que retorna "hello world" e outro que lista todos os models `Test` do sistema. 
-
-Ao iniciar o projeto, de cara já é populado duas entidades `Test` no sistema para validar o funcionamento.
-
-Para testar as duas ações do `TestController.js`, basta apenas abrir o url `http://localhost/api` para ver o hello world e `http://localhost/api/Test` para listar todos os models `Test` disponíveis no sistema.
-
-Consequentemente, podemos conectar no MongoDB, como descrito acima, por meio dos visualizadores de dados (como o MongoDB Compass), acessar o BD `admin` e validar que existe a "Collection" `test` com dois documentos, os mesmos fornecidos na endpoint `/api/Test`.
